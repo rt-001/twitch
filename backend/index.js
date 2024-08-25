@@ -4,6 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./src/routes/authRoutes.js";
+import channelsRoutes from "./src/routes/channelsRoutes.js";
+import settingsRoutes from "./src/routes/settingsRoutes.js";
 
 dotenv.config();
 const PORT = 3000;
@@ -14,8 +16,9 @@ app.get("/", (req, res) => {
   return res.send("Hello here is your server");
 });
 app.use("/api/auth", authRoutes);
+app.use("/api/channels", channelsRoutes);
+app.use("/api/settings", settingsRoutes);
 const server = http.createServer(app);
-
 app.listen(PORT, () => {
   console.log(`Backend is up at port ${PORT}.`);
   mongoose.set("strictQuery", true);
