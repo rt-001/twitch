@@ -13,9 +13,9 @@ export const putChannelSettings = async (req, res) => {
       await User.updateOne({ _id: userId }, { username });
     }
 
-    console.log(userData);
+    // console.log(userData);
 
-    console.log(userData.channel);
+    // console.log(userData.channel);
 
     const channelData = await Channel.findByIdAndUpdate(
       userData.channel,
@@ -27,6 +27,7 @@ export const putChannelSettings = async (req, res) => {
       },
       { new: true }
     );
+    // new :true returns the updated value
 
     return res.status(200).json({
       channeId: channelData._id,
